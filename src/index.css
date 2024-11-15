@@ -8,3 +8,7 @@
   background-color: #e7e7e7;
   color: black;
 }
+
+.full-height {
+  min-height: calc(100vh - 64px);
+}

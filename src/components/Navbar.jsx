@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
@@ -45,9 +45,12 @@ const Navbar = () => {
         </div>
         <div className="navbar-end gap-2">
           <FaUserCircle className="w-7 h-7 text-gray-700" />
-          <a className="btn btn-sm rounded-none text-white bg-gray-700 font-medium px-4 hover:text-black">
+          <Link
+            to={"/auth/login"}
+            className="btn btn-sm rounded-none text-white bg-gray-700 font-medium px-4 hover:text-black"
+          >
             Login
-          </a>
+          </Link>
         </div>
       </div>
     </div>
