@@ -6,7 +6,7 @@ import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Post = ({ post }) => {
-  const { details, image_url, title, author, rating, total_view } = post;
+  const { _id, details, image_url, title, author, rating, total_view } = post;
 
   return (
     <div>
@@ -40,7 +40,10 @@ const Post = ({ post }) => {
           <p className="font-light text-sm line-clamp-4 text-gray-600">
             {details}
           </p>
-          <Link className="text-sm font-semibold text-orange-500 block mt-2 mb-4">
+          <Link
+            to={`/newsDetails/${_id}`}
+            className="text-sm font-semibold text-orange-500 block mt-2 mb-4"
+          >
             Read More
           </Link>
           <hr />
