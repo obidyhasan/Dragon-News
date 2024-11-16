@@ -1,10 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
+
   const navbarLink = (
     <div className="flex items-center gap-5 text-gray-500 text-sm">
-      <NavLink>Home</NavLink>
+      <NavLink to={"/"}>Home</NavLink>
       <NavLink>About</NavLink>
       <NavLink>Career</NavLink>
     </div>
@@ -38,19 +42,40 @@ const Navbar = () => {
               {navbarLink}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl hidden">daisyUI</a>
+          <a className="text-base">{user && user.email}</a>
         </div>
         <div className="navbar-center hidden md:flex">
           <ul className="menu menu-horizontal px-1">{navbarLink}</ul>
         </div>
         <div className="navbar-end gap-2">
-          <FaUserCircle className="w-7 h-7 text-gray-700" />
-          <Link
-            to={"/auth/login"}
-            className="btn btn-sm rounded-none text-white bg-gray-700 font-medium px-4 hover:text-black"
-          >
-            Login
-          </Link>
+          <div>
+            {user ? (
+              <figure>
+                <img
+                  src={user.photoURL}
+                  className="w-8 h-8 object-cover rounded-full"
+                  alt=""
+                />
+              </figure>
+            ) : (
+              <FaUserCircle className="w-7 h-7 text-gray-700" />
+            )}
+          </div>
+          {user ? (
+            <button
+              onClick={logout}
+              className="btn btn-sm rounded-none text-white bg-gray-700 font-medium px-4 hover:text-black"
+            >
+              Logout
+            </button>
+          ) : (
+            <Link
+              to={"/auth/login"}
+              className="btn btn-sm rounded-none text-white bg-gray-700 font-medium px-4 hover:text-black"
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>

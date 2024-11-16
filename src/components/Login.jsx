@@ -1,13 +1,23 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
+
   function handelLogin(e) {
     e.preventDefault();
     const form = new FormData(e.target);
     const email = form.get("email");
     const password = form.get("password");
 
-    console.log({ email, password });
+    signIn(email, password)
+      .then(() => {
+        console.log("Login Successfully");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   }
 
   return (

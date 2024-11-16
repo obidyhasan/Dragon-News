@@ -16,7 +16,7 @@ const RightLayout = () => {
             <FaGoogle></FaGoogle> Login with Google
           </button>
           <button className="btn btn-outline rounded">
-            <FaGithub></FaGithub> Login with Google
+            <FaGithub></FaGithub> Login with Github
           </button>
         </div>
       </div>
