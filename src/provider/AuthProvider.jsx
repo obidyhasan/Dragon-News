@@ -42,10 +42,12 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   function logout() {
+    setLoading(true);
     return signOut(auth);
   }
 
   function updateUserProfile(data) {
+    setLoading(true);
     return updateProfile(auth.currentUser, data);
   }
 
